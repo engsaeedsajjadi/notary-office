@@ -1,0 +1,11 @@
+{
+  "name": "notary-office-1762",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "mkdir -p dist && esbuild index.tsx --bundle --outfile=dist/main.js --jsx=automatic --loader:.tsx=tsx --external:react --external:react-dom"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2"
+  }
+}

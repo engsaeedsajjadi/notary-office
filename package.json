@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "esbuild index.tsx --bundle --outfile=main.js --jsx=automatic --loader:.tsx=tsx --external:react --external:react-dom"
+    "build": "esbuild index.tsx --bundle --outfile=public/main.js --jsx=automatic --loader:.tsx=tsx --external:react --external:react-dom && cp index.html public/"
   },
   "devDependencies": {
     "esbuild": "^0.20.2"

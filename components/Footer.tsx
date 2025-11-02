@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
     <footer className="bg-slate-800 text-white">
       <div className="container mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center relative">
         <p className="text-sm text-center sm:text-start">
-          کلیه حقوق برای دفتر اسناد رسمی شماره ۱۷۶۲ تهران محفوظ است. © {new Date().getFullYear()}
+          کلیه حقوق برای دفتر اسناد رسمی شماره ۱۷۶۲ تهران محفوظ است. © {new Date().getFullYear()} | www.no1762notarypublic.com
         </p>
         <button
           onClick={scrollToTop}

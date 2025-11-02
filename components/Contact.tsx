@@ -8,16 +8,17 @@ import { GoogleMapsIcon } from './icons/GoogleMapsIcon';
 import { WazeIcon } from './icons/WazeIcon';
 import { NeshanIcon } from './icons/NeshanIcon';
 import { BaladIcon } from './icons/BaladIcon';
+import { EmailIcon } from './icons/EmailIcon';
 
 const navigationLinks = [
-    { name: 'گوگل مپ', href: 'https://share.google/aF5GocYrzaci9qbrk', icon: <GoogleMapsIcon className="w-6 h-6 me-2" /> },
-    { name: 'نشان', href: 'https://nshn.ir/807bv7JSexi4Ht', icon: <NeshanIcon className="w-6 h-6 me-2" /> },
-    { name: 'بلد', href: 'https://balad.ir/p/1TjTcqhuAoBurF', icon: <BaladIcon className="w-6 h-6 me-2" /> },
-    { name: 'ویز', href: 'https://waze.com/ul/htnked1kx5', icon: <WazeIcon className="w-6 h-6 me-2" /> },
+    { name: 'گوگل مپ', href: 'https://maps.app.goo.gl/9qW1wY8XzZt6nLq8A', icon: <GoogleMapsIcon className="w-6 h-6 me-2" /> },
+    { name: 'نشان', href: 'https://nshn.ir/90rbv_7RYx_j7z', icon: <NeshanIcon className="w-6 h-6 me-2" /> },
+    { name: 'بلد', href: 'https://balad.ir/p/4fCj3fH2sJgUf7', icon: <BaladIcon className="w-6 h-6 me-2" /> },
+    { name: 'ویز', href: 'https://waze.com/ul/htnke9ud6d', icon: <WazeIcon className="w-6 h-6 me-2" /> },
 ];
 
 const Contact: React.FC = () => {
-  const mapUrl = "https://maps.google.com/maps?q=%D8%AA%D9%87%D8%B1%D8%A7%D9%86%D8%8C%20%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%DB%8C%D8%8C%20%D8%A8%D8%A7%D9%84%D8%A7%D8%AA%D8%B1%20%D8%A7%D8%B2%20%D9%85%DB%8C%D8%B1%D8%AF%D8%A7%D9%85%D8%A7%D8%AF%D8%8C%20%D8%B1%D9%88%D8%A8%D8%B1%D9%88%DB%8C%20%D9%85%D8%AA%D8%B1%D9%88%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%DB%8C%D8%8C%20%D9%86%D8%A8%D8%B4%20%DA%A9%D9%88%DA%86%D9%87%20%D8%B2%DB%8C%D8%A8%D8%A7%D8%8C%20%D9%BE%D9%84%D8%A7%DA%A9%20%DB%B1&t=&z=17&ie=UTF8&iwloc=&output=embed";
+  const mapUrl = "https://maps.google.com/maps?q=%D8%AA%D9%87%D8%B1%D8%A7%D9%86%D8%8C%20%D8%AC%D8%B1%D8%AF%D9%86%D8%8C%20%D9%BE%D9%84%D8%A7%DA%A9%20%DB%B2%DB%B1%DB%B6%D8%8C%20%D8%B3%D8%A7%D8%AE%D8%AA%D9%85%D8%A7%D9%86%20%D9%85%D8%B1%DA%A9%D8%B2%20%D8%AA%D8%AC%D8%A7%D8%B1%D8%AA%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86&t=&z=17&ie=UTF8&iwloc=&output=embed";
 
   return (
     <section id="contact" className="py-16 md:py-24 bg-slate-100">
@@ -33,7 +34,7 @@ const Contact: React.FC = () => {
                 <MapPinIcon className="w-6 h-6 text-amber-500 me-4 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-bold text-lg">آدرس</h3>
-                  <p className="text-slate-600">تهران، خیابان شریعتی، بالاتر از میرداماد، روبروی مترو شریعتی، نبش کوچه زیبا، پلاک ۱، طبقه ۴، واحد ۱۱</p>
+                  <p className="text-slate-600">تهران، جردن، پلاک ۲۱۶، برج مشکی (ساختمان مرکز تجارت ایران)، طبقه ۴، واحد ۳</p>
                 </div>
               </div>
                <div className="flex items-start">
@@ -42,6 +43,13 @@ const Contact: React.FC = () => {
                   <h3 className="font-bold text-lg">شماره‌های تماس</h3>
                   <a href="tel:02126212506" className="block text-slate-600 hover:text-amber-600">۰۲۱-۲۶۲۱۲۵۰۶</a>
                   <a href="tel:02126212505" className="block text-slate-600 hover:text-amber-600">۰۲۱-۲۶۲۱۲۵۰۵</a>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <EmailIcon className="w-6 h-6 text-amber-500 me-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-bold text-lg">ایمیل</h3>
+                  <a href="mailto:no1762notarypublic@gmail.com" className="block text-slate-600 hover:text-amber-600" style={{direction: 'ltr', textAlign: 'right'}}>no1762notarypublic@gmail.com</a>
                 </div>
               </div>
                <div className="flex items-start">

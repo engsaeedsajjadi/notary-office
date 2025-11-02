@@ -1,18 +1,21 @@
 {
-  "name": "notary-office-1762",
-  "version": "1.0.0",
+  "name": "no:1762-notary-public",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "esbuild index.tsx --bundle --outfile=public/main.js --jsx=automatic --loader:.tsx=tsx && cp index.html public/"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "esbuild": "^0.20.2",
-    "typescript": "^5.4.5"
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
   }
 }

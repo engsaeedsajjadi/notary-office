@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { MapPinIcon } from './icons/MapPinIcon';
 import { PhoneIcon } from './icons/PhoneIcon';
@@ -9,6 +8,8 @@ import { WazeIcon } from './icons/WazeIcon';
 import { NeshanIcon } from './icons/NeshanIcon';
 import { BaladIcon } from './icons/BaladIcon';
 import { EmailIcon } from './icons/EmailIcon';
+import { TelegramIcon } from './icons/TelegramIcon';
+import { WhatsAppIcon } from './icons/WhatsAppIcon';
 
 const navigationLinks = [
     { name: 'گوگل مپ', href: 'https://maps.app.goo.gl/9qW1wY8XzZt6nLq8A', icon: <GoogleMapsIcon className="w-6 h-6 me-2" /> },
@@ -65,7 +66,21 @@ const Contact: React.FC = () => {
                 <EitaaIcon className="w-6 h-6 text-amber-500 me-4 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-bold text-lg">پیام‌رسان ایتا</h3>
-                  <a href="https://eitaa.com/Seyyed_as121" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-amber-600">Seyyed_as121@</a>
+                  <a href="https://eitaa.com/No1762notarypublic" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-amber-600" style={{direction: 'ltr', textAlign: 'right'}}>@No1762notarypublic</a>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <TelegramIcon className="w-6 h-6 text-amber-500 me-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-bold text-lg">تلگرام</h3>
+                  <a href="https://t.me/No1762notarypublic" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-amber-600" style={{direction: 'ltr', textAlign: 'right'}}>@No1762notarypublic</a>
+                </div>
+              </div>
+               <div className="flex items-start">
+                <WhatsAppIcon className="w-6 h-6 text-amber-500 me-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-bold text-lg">واتساپ</h3>
+                  <a href="https://wa.me/989050890758" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-amber-600" style={{direction: 'ltr', textAlign: 'right'}}>09050890758</a>
                 </div>
               </div>
             </div>

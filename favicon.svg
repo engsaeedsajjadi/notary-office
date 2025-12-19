@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600">
+  <path d="M50,50 H450 L450,150 C450,400 250,550 250,550 C250,550 50,400 50,150 Z" fill="#fdf5e6" stroke="#3e2723" stroke-width="15"/>
+  <path d="M70,70 H430 L430,150 C430,370 250,520 250,520 C250,520 70,370 70,150 Z" fill="none" stroke="#3e2723" stroke-width="5"/>
+  <text x="250" y="160" font-family="serif" font-weight="bold" font-size="70" fill="#3e2723" text-anchor="middle">No.1762</text>
+  <g transform="translate(140, 200) scale(0.6)">
+     <path d="M50 50 C30 50 30 80 50 80 H250 C270 80 270 50 250 50 H50 Z" fill="none" stroke="#3e2723" stroke-width="10"/>
+     <path d="M50 80 V250 C50 270 80 270 80 250" fill="none" stroke="#3e2723" stroke-width="10"/>
+     <path d="M250 80 V230 H80" fill="none" stroke="#3e2723" stroke-width="10"/>
+     <line x1="80" y1="120" x2="220" y2="120" stroke="#3e2723" stroke-width="8"/>
+     <line x1="80" y1="160" x2="220" y2="160" stroke="#3e2723" stroke-width="8"/>
+     <line x1="80" y1="200" x2="180" y2="200" stroke="#3e2723" stroke-width="8"/>
+     <path d="M280 20 C280 20 320 0 340 20 C360 40 300 150 200 250" fill="none" stroke="#3e2723" stroke-width="12" stroke-linecap="round"/>
+     <path d="M200 250 L180 270" stroke="#3e2723" stroke-width="8"/>
+  </g>
+  <text x="250" y="420" font-family="serif" font-weight="bold" font-size="60" fill="#3e2723" text-anchor="middle">NOTARY</text>
+  <text x="250" y="480" font-family="serif" font-weight="bold" font-size="60" fill="#3e2723" text-anchor="middle">PUBLIC</text>
+</svg>

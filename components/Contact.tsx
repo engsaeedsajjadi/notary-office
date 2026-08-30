@@ -11,6 +11,8 @@ import { EmailIcon } from './icons/EmailIcon';
 import { TelegramIcon } from './icons/TelegramIcon';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { SnappIcon } from './icons/SnappIcon';
+import { RubikaIcon } from './icons/RubikaIcon';
+import { BaleIcon } from './icons/BaleIcon';
 
 // مختصات دقیق دفترخانه (ساختمان مرکز تجارت ایران - برج مشکی جردن)
 const LAT = 35.7796915;
@@ -118,6 +120,20 @@ const Contact: React.FC = () => {
                 <div>
                   <h3 className="font-bold text-lg">واتساپ</h3>
                   <a href="https://wa.me/989211762186" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-amber-600" style={{direction: 'ltr', textAlign: 'right'}}>09211762186</a>
+                </div>
+              </div>
+               <div className="flex items-start">
+                <RubikaIcon className="w-6 h-6 text-amber-500 me-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-bold text-lg">روبیکا</h3>
+                  <a href="https://rubika.ir/09211762186" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-amber-600" style={{direction: 'ltr', textAlign: 'right'}}>09211762186</a>
+                </div>
+              </div>
+               <div className="flex items-start">
+                <BaleIcon className="w-6 h-6 text-amber-500 me-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-bold text-lg">بله</h3>
+                  <a href="https://ble.ir/09211762186" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-amber-600" style={{direction: 'ltr', textAlign: 'right'}}>09211762186</a>
                 </div>
               </div>
             </div>

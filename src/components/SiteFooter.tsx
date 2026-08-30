@@ -1,6 +1,20 @@
 import { Link } from 'react-router-dom';
 import { BUSINESS, primaryPhone } from '../data/business';
 import { SERVICES } from '../data/services';
+import { WhatsAppIcon } from '../../components/icons/WhatsAppIcon';
+import { TelegramIcon } from '../../components/icons/TelegramIcon';
+import { EitaaIcon } from '../../components/icons/EitaaIcon';
+import { RubikaIcon } from '../../components/icons/RubikaIcon';
+import { BaleIcon } from '../../components/icons/BaleIcon';
+
+/** پیام‌رسان‌ها — همگی روی یک شماره واحد */
+const MESSENGERS = [
+  { name: 'واتساپ', href: BUSINESS.whatsapp.link, Icon: WhatsAppIcon },
+  { name: 'تلگرام', href: BUSINESS.telegram.link, Icon: TelegramIcon },
+  { name: 'ایتا', href: BUSINESS.eitaa.link, Icon: EitaaIcon },
+  { name: 'روبیکا', href: BUSINESS.rubika.link, Icon: RubikaIcon },
+  { name: 'بله', href: BUSINESS.bale.link, Icon: BaleIcon },
+];
 
 export default function SiteFooter() {
   const year = new Date().getFullYear();
@@ -100,6 +114,26 @@ export default function SiteFooter() {
                 <br />
                 {BUSINESS.hours.thursday.label}: {BUSINESS.hours.thursday.open} تا{' '}
                 {BUSINESS.hours.thursday.close}
+              </li>
+              <li className="pt-3">
+                <span className="block text-slate-400 mb-2">
+                  پیام‌رسان‌ها — {BUSINESS.messengerPhone.display}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {MESSENGERS.map((m) => (
+                    <a
+                      key={m.name}
+                      href={m.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={m.name}
+                      aria-label={m.name}
+                      className="w-9 h-9 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center hover:bg-amber-500 hover:text-white transition-colors"
+                    >
+                      <m.Icon className="w-5 h-5" />
+                    </a>
+                  ))}
+                </div>
               </li>
             </ul>
           </div>

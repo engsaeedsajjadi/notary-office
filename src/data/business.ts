@@ -20,9 +20,14 @@ export const BUSINESS = {
     { display: '۰۲۱-۲۶۲۱۲۵۰۵', tel: '02126212505', primary: false },
   ],
 
+  // شماره پیام‌رسان‌ها — یک شماره واحد روی همه پیام‌رسان‌ها فعال است
+  messengerPhone: { display: '۰۹۲۱۱۷۶۲۱۸۶', intl: '989211762186', local: '09211762186' },
+
   whatsapp: { display: '۰۹۲۱۱۷۶۲۱۸۶', link: 'https://wa.me/989211762186' },
   telegram: { display: '@No1762notarypublic', link: 'https://t.me/No1762notarypublic' },
   eitaa: { display: '@No1762notarypublic', link: 'https://eitaa.com/No1762notarypublic' },
+  rubika: { display: '۰۹۲۱۱۷۶۲۱۸۶', link: 'https://rubika.ir/09211762186' },
+  bale: { display: '۰۹۲۱۱۷۶۲۱۸۶', link: 'https://ble.ir/09211762186' },
   email: 'no1762notarypublic@gmail.com',
 
   address: {

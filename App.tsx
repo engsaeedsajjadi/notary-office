@@ -1,29 +1,46 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './src/Layout';
+import ScrollToTop from './src/components/ScrollToTop';
+import Analytics from './src/components/Analytics';
 
-import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import Services from './components/Services';
-import ServicesDetail from './components/ServicesDetail';
-import FAQ from './components/FAQ';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import HomePage from './src/pages/HomePage';
+import ServicesPage from './src/pages/ServicesPage';
+import ServiceDetailPage from './src/pages/ServiceDetailPage';
+import FeesPage from './src/pages/FeesPage';
+import ChecklistPage from './src/pages/ChecklistPage';
+import ArticlesPage from './src/pages/ArticlesPage';
+import ArticleDetailPage from './src/pages/ArticleDetailPage';
+import AppointmentPage from './src/pages/AppointmentPage';
+import TrackingPage from './src/pages/TrackingPage';
+import PartnersPage from './src/pages/PartnersPage';
+import ContactPage from './src/pages/ContactPage';
+import FaqPage from './src/pages/FaqPage';
+import EnglishPage from './src/pages/EnglishPage';
+import NotFoundPage from './src/pages/NotFoundPage';
 
-const App: React.FC = () => {
+export default function App() {
   return (
-    <div className="bg-slate-50 text-slate-800 font-sans selection:bg-amber-200 selection:text-slate-900">
-      <Header />
-      <main>
-        <Hero />
-        <Features />
-        <Services />
-        <ServicesDetail />
-        <FAQ />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Analytics />
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="services" element={<ServicesPage />} />
+          <Route path="services/:slug" element={<ServiceDetailPage />} />
+          <Route path="fees" element={<FeesPage />} />
+          <Route path="checklist" element={<ChecklistPage />} />
+          <Route path="articles" element={<ArticlesPage />} />
+          <Route path="articles/:slug" element={<ArticleDetailPage />} />
+          <Route path="appointment" element={<AppointmentPage />} />
+          <Route path="tracking" element={<TrackingPage />} />
+          <Route path="partners" element={<PartnersPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="faq" element={<FaqPage />} />
+          <Route path="en" element={<EnglishPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-};
-
-export default App;
+}

@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+
+# Environment variables (VITE_GA_ID و ...)
+.env
+.env.*
+!.env.example

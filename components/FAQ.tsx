@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { ChevronDownIcon } from './icons/ChevronDownIcon';
 
-const faqs = [
+export const faqs = [
   {
     question: "مدارک لازم برای تنظیم وکالت‌نامه چیست؟",
     answer: "اصل کارت ملی و شناسنامه موکل (شخصی که وکالت می‌دهد) و کپی مدارک وکیل. در صورتی که موضوع وکالت ملک یا خودرو باشد، اسناد مالکیت نیز مورد نیاز است."
@@ -35,15 +35,21 @@ const FAQ: React.FC = () => {
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div key={index} className="border border-slate-200 rounded-xl overflow-hidden hover:border-amber-300 transition-colors">
-              <button 
+              <button
+                id={`faq-btn-${index}`}
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-panel-${index}`}
                 className="w-full flex items-center justify-between p-5 text-start bg-slate-50 hover:bg-slate-100 transition-colors"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
                 <span className="font-bold text-slate-800">{faq.question}</span>
                 <ChevronDownIcon className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${openIndex === index ? 'rotate-180 text-amber-500' : ''}`} />
               </button>
-              <div 
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
+              <div
+                id={`faq-panel-${index}`}
+                role="region"
+                aria-labelledby={`faq-btn-${index}`}
+                hidden={openIndex !== index}
               >
                 <div className="p-5 text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
                   {faq.answer}

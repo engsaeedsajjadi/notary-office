@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
         <p className="text-sm text-center sm:text-start flex items-center gap-2">
           <span>کلیه حقوق برای دفتر اسناد رسمی شماره ۱۷۶۲ تهران محفوظ است. © {new Date().getFullYear()}</span>
           <span className="hidden sm:inline">|</span>
-          <a href="/" className="hover:text-amber-400 transition-colors">www.1762daftarasnad.ir</a>
+          <a href="https://www.1762daftarasnad.ir/" className="hover:text-amber-400 transition-colors">www.1762daftarasnad.ir</a>
         </p>
         <button
           onClick={scrollToTop}

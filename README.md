@@ -5,6 +5,10 @@
 
 ساخته‌شده با **React 19 + TypeScript + Vite** و **Tailwind CSS**.
 
+تمام دارایی‌های سایت (فونت، تصاویر، استایل) به‌صورت **محلی** سرو می‌شوند و هیچ
+وابستگی به CDN خارجی وجود ندارد — این موضوع برای سرعت و دسترس‌پذیری سایت
+از داخل ایران اهمیت زیادی دارد.
+
 ---
 
 ## اجرای پروژه
@@ -32,6 +36,9 @@ npm run preview
 ```
 ├── index.html              صفحه اصلی، متاتگ‌های SEO و Schema.org
 ├── index.tsx               نقطه ورود React
+├── index.css               تعریف فونت محلی + ورودی Tailwind
+├── tailwind.config.js      تنظیمات Tailwind
+├── postcss.config.js       تنظیمات PostCSS
 ├── App.tsx                 چیدمان بخش‌های صفحه
 ├── components/             کامپوننت‌های صفحه
 │   ├── Header.tsx          هدر چسبان + منو
@@ -44,16 +51,22 @@ npm run preview
 │   ├── Footer.tsx          فوتر
 │   └── icons/              آیکون‌های SVG
 ├── public/                 فایل‌های استاتیک (مستقیماً در dist کپی می‌شوند)
+│   ├── fonts/              فونت وزیرمتن (variable، ۱۱۱KB)
+│   ├── hero.webp           تصویر بالای صفحه — دسکتاپ
+│   ├── hero-mobile.webp    تصویر بالای صفحه — موبایل
+│   ├── hero.jpg            نسخه جایگزین برای مرورگرهای قدیمی
 │   ├── favicon.ico         فاویکون چندلایه ۱۶+۳۲+۴۸
 │   ├── favicon.svg         نشان برداری
 │   ├── og-image.png        تصویر اشتراک‌گذاری شبکه‌های اجتماعی
 │   ├── site.webmanifest    مانیفست PWA
 │   ├── robots.txt
 │   └── sitemap.xml
-└── assets-src/             منابع طراحی نشان (در سایت منتشر نمی‌شوند)
+└── assets-src/             منابع طراحی (در سایت منتشر نمی‌شوند)
     ├── icon.svg            نشان کامل — برای ۱۹۲px به بالا
     ├── icon-small.svg      نشان ساده‌شده — برای ۳۲ تا ۱۸۰px
     ├── icon-16.svg         نشان حداقلی — برای ۱۶px
+    ├── hero-source.jpg     تصویر اصلی بالای صفحه (فشرده‌نشده)
+    ├── fonts/              فونت TTF برای تولید og-image
     └── generate-icons.mjs  اسکریپت تولید آیکون‌ها
 ```
 
@@ -97,3 +110,16 @@ npm run icons
   و Schema.org داخل `index.html`. هنگام تغییر، هر دو را به‌روز کنید.
 - **دامنه سایت** در `index.html` (canonical و Open Graph)، `public/robots.txt`
   و `public/sitemap.xml` آمده است.
+
+---
+
+## بهینه‌سازی‌های انجام‌شده
+
+| مورد | قبل | بعد |
+|---|---|---|
+| Tailwind | اسکریپت CDN (~۴۰۰KB، مخصوص توسعه) | بیلد محلی، ۲۸KB (۵KB فشرده) |
+| فونت | Google Fonts (۵ درخواست خارجی) | فایل محلی variable، ۱۱۱KB |
+| تصویر Hero | Unsplash، ۱۹۲۰px خارجی | WebP محلی، ۷۸KB (موبایل ۴۰KB) |
+
+همچنین `prefers-reduced-motion` رعایت شده تا انیمیشن‌ها برای کاربرانی که
+در تنظیمات سیستم‌عامل کاهش حرکت را فعال کرده‌اند، غیرفعال شود.

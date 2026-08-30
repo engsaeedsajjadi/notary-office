@@ -20,11 +20,20 @@ const Hero: React.FC = () => {
 
   return (
     <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-slate-900">
-      {/* Background Image with modern overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center z-0 transform scale-105"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1920&q=80')" }}
-      ></div>
+      {/* Background Image with modern overlay
+          تصویر به‌صورت محلی سرو می‌شود (بدون وابستگی به سرور خارجی).
+          مرورگرهای مدرن WebP و بقیه JPEG را دریافت می‌کنند. */}
+      <picture className="absolute inset-0 z-0">
+        <source media="(max-width: 768px)" srcSet="/hero-mobile.webp" type="image/webp" />
+        <source srcSet="/hero.webp" type="image/webp" />
+        <img
+          src="/hero.jpg"
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          className="w-full h-full object-cover transform scale-105"
+        />
+      </picture>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/70 z-10"></div>
       
       {/* Abstract Design Elements */}

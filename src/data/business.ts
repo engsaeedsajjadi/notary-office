@@ -66,13 +66,14 @@ export const primaryPhone = BUSINESS.phones.find((p) => p.primary)!;
  * پس این لینک‌ها را با مختصات جایگزین نکنید. اگر مکان در سرویس جدیدی ثبت
  * شد، لینک اشتراک‌گذاری همان سرویس را اینجا اضافه کنید.
  *
- * ویز مکان ثبت‌شده ندارد، بنابراین همچنان بر پایه مختصات کار می‌کند.
+ * هر چهار سرویس (گوگل مپ، نشان، بلد و ویز) لینک مکان ثبت‌شده دارند.
+ * مقدار `geo` همچنان برای داده ساختاریافته و نقشه تعبیه‌شده لازم است.
  */
 export const navigationLinks = {
   google: 'https://maps.app.goo.gl/Xj2Cf8hQFPXwiarr7',
   neshan: 'https://nshn.ir/80rbv7JSexi4Ht',
   balad: 'https://balad.ir/p/1TjTcqhuAoBurF',
-  waze: `https://www.waze.com/ul?ll=${BUSINESS.geo.lat}%2C${BUSINESS.geo.lng}&navigate=yes&zoom=17`,
+  waze: 'https://waze.com/ul/htnked1s85',
 
   // نقشه تعبیه‌شده: با جستجوی نام کسب‌وکار، پین همراه با نام دفتر نمایش
   // داده می‌شود — برخلاف جستجوی مختصات که فقط یک نقطه بی‌نام است.

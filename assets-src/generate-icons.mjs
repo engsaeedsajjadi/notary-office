@@ -26,10 +26,15 @@ const TINY = src('icon-16.svg');
 const targets = [
   ['favicon-16x16.png', 16, TINY, null],
   ['favicon-32x32.png', 32, SMALL, null],
-  ['favicon-48x48.png', 48, SMALL, null],
+  // گوگل برای نتایج جستجو آیکون ۴۸px به بالا لازم دارد و روی پس‌زمینه
+  // سفید نمایش می‌دهد، بنابراین این نسخه‌ها پس‌زمینه تیره تخت دارند
+  // تا نشان روی پس‌زمینه روشن گوگل محو نشود.
+  ['favicon-48x48.png', 48, SMALL, '#0f172a'],
+  ['favicon-96x96.png', 96, SMALL, '#0f172a'],
   ['apple-touch-icon.png', 180, SMALL, '#0f172a'], // iOS شفافیت را سیاه می‌کند
-  ['android-chrome-192x192.png', 192, FULL, null],
-  ['android-chrome-512x512.png', 512, FULL, null],
+  ['android-chrome-192x192.png', 192, FULL, '#0f172a'],
+  ['android-chrome-512x512.png', 512, FULL, '#0f172a'],
+  ['logo-512x512.png', 512, FULL, '#ffffff'], // لوگوی Schema.org — پس‌زمینه سفید
   ['og-image.png', null, FULL, null], // جداگانه ساخته می‌شود
 ];
 

@@ -60,6 +60,7 @@ const Header: React.FC = () => {
             <nav className="hidden md:flex gap-6 text-sm font-medium text-slate-300">
                 <a href="#home" onClick={(e) => handleNavClick(e, 'home')} className="hover:text-amber-400 transition-colors cursor-pointer">خانه</a>
                 <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-amber-400 transition-colors cursor-pointer">خدمات</a>
+                <a href="#solh-omri" onClick={(e) => handleNavClick(e, 'solh-omri')} className="hover:text-amber-400 transition-colors cursor-pointer">صلح عمری</a>
                 <a href="#features" onClick={(e) => handleNavClick(e, 'features')} className="hover:text-amber-400 transition-colors cursor-pointer">ویژگی‌ها</a>
                 <a href="#faq" onClick={(e) => handleNavClick(e, 'faq')} className="hover:text-amber-400 transition-colors cursor-pointer">سوالات متداول</a>
                 <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-amber-400 transition-colors cursor-pointer">تماس و آدرس</a>

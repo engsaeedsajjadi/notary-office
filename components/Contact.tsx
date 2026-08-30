@@ -10,16 +10,53 @@ import { BaladIcon } from './icons/BaladIcon';
 import { EmailIcon } from './icons/EmailIcon';
 import { TelegramIcon } from './icons/TelegramIcon';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
+import { SnappIcon } from './icons/SnappIcon';
+
+// مختصات دقیق دفترخانه (ساختمان مرکز تجارت ایران - برج مشکی جردن)
+const LAT = 35.7796915;
+const LNG = 51.4224039;
+const PLACE_LABEL = 'دفتر اسناد رسمی ۱۷۶۲ تهران';
+const SNAPP_KEYWORD = 'دفتر اسناد رسمی ۱۷۶۲';
 
 const navigationLinks = [
-    { name: 'گوگل مپ', href: 'https://maps.app.goo.gl/9qW1wY8XzZt6nLq8A', icon: <GoogleMapsIcon className="w-6 h-6 me-2" /> },
-    { name: 'نشان', href: 'https://nshn.ir/807bv7JSexi4Ht', icon: <NeshanIcon className="w-6 h-6 me-2" /> },
-    { name: 'بلد', href: 'https://balad.ir/p/1TjTcqhuAoBurF', icon: <BaladIcon className="w-6 h-6 me-2" /> },
-    { name: 'ویز', href: 'https://waze.com/ul/htnked1kx5', icon: <WazeIcon className="w-6 h-6 me-2" /> },
+    {
+        name: 'گوگل مپ',
+        // لینک مبتنی بر مختصات - همیشه معتبر است و نیاز به لینک کوتاه ندارد
+        href: `https://www.google.com/maps/search/?api=1&query=${LAT}%2C${LNG}`,
+        icon: <GoogleMapsIcon className="w-6 h-6 me-2" />,
+    },
+    {
+        name: 'نشان',
+        href: `https://neshan.org/maps/@${LAT},${LNG},17z,0p`,
+        icon: <NeshanIcon className="w-6 h-6 me-2" />,
+    },
+    {
+        name: 'بلد',
+        href: `https://balad.ir/location?latitude=${LAT}&longitude=${LNG}&zoom=17`,
+        icon: <BaladIcon className="w-6 h-6 me-2" />,
+    },
+    {
+        name: 'ویز',
+        href: `https://www.waze.com/ul?ll=${LAT}%2C${LNG}&navigate=yes&zoom=17`,
+        icon: <WazeIcon className="w-6 h-6 me-2" />,
+    },
 ];
 
 const Contact: React.FC = () => {
-  const mapUrl = "https://maps.google.com/maps?q=%D8%AA%D9%87%D8%B1%D8%A7%D9%86%D8%8C%20%D8%AC%D8%B1%D8%AF%D9%86%D8%8C%20%D9%BE%D9%84%D8%A7%DA%A9%20%DB%B2%DB%B1%DB%B6%D8%8C%20%D8%B3%D8%A7%D8%AE%D8%AA%D9%85%D8%A7%D9%86%20%D9%85%D8%B1%DA%A9%D8%B2%20%D8%AA%D8%AC%D8%A7%D8%B1%D8%AA%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86&t=&z=17&ie=UTF8&iwloc=&output=embed";
+  // نقشه تعبیه‌شده بر پایه مختصات (بدون نیاز به کلید API)
+  const mapUrl = `https://maps.google.com/maps?q=${LAT},${LNG}&z=17&hl=fa&output=embed`;
+
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopyKeyword = async () => {
+    try {
+      await navigator.clipboard.writeText(SNAPP_KEYWORD);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* اگر مرورگر اجازه ندهد، کاربر می‌تواند دستی تایپ کند */
+    }
+  };
 
   return (
     <section id="contact" className="py-16 md:py-24 bg-slate-100">
@@ -95,14 +132,41 @@ const Contact: React.FC = () => {
                          </a>
                      ))}
                  </div>
-                 <div className="mt-6 text-center text-sm text-slate-500 bg-slate-200 p-3 rounded-md">
-                    <p>"با جستجوی کلیدواژه «دفتر اسناد رسمی ۱۷۶۲» ما را در اسنپ (Snapp)، تپسی (TAPSI) و ماکسیم (Maxim) به راحتی پیدا کنید."</p>
+                 {/* دکمه اسنپ */}
+                 <a
+                    href="https://app.snapp.taxi/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleCopyKeyword}
+                    className="mt-4 flex items-center justify-center w-full bg-gradient-to-l from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white px-4 py-3 rounded-md transition-colors duration-300"
+                 >
+                    <SnappIcon className="w-6 h-6 me-2" />
+                    <span className="font-bold">درخواست اسنپ به مقصد «دفتر ۱۷۶۲»</span>
+                 </a>
+
+                 <div className="mt-4 text-center text-sm text-slate-600 bg-slate-200 p-3 rounded-md space-y-2">
+                    <p>
+                      در اپلیکیشن اسنپ، در کادر مقصد عبارت{' '}
+                      <button
+                        type="button"
+                        onClick={handleCopyKeyword}
+                        className="font-bold text-slate-900 bg-white border border-slate-300 rounded px-2 py-0.5 hover:bg-amber-50 hover:border-amber-400 transition-colors"
+                        title="برای کپی کردن کلیک کنید"
+                      >
+                        {copied ? '✓ کپی شد' : 'دفتر اسناد رسمی ۱۷۶۲'}
+                      </button>{' '}
+                      را جستجو کنید.
+                    </p>
+                    <p className="text-slate-500">
+                      با همین کلیدواژه ما را در تپسی (TAPSI) و ماکسیم (Maxim) نیز پیدا می‌کنید.
+                    </p>
                  </div>
             </div>
           </div>
           <div className="w-full h-80 md:h-full rounded-lg shadow-lg overflow-hidden">
             <iframe
                 src={mapUrl}
+                title={`موقعیت مکانی ${PLACE_LABEL} روی نقشه`}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

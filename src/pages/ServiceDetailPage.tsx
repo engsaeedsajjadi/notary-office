@@ -155,13 +155,14 @@ export default function ServiceDetailPage() {
                 <div className="bg-white rounded-2xl border border-slate-200 p-6">
                   <h3 className="font-bold text-slate-900 mb-2">هزینه این خدمت</h3>
                   <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                    برای برآورد تخمینی هزینه بر اساس تعرفه مصوب، از ماشین‌حساب استفاده کنید.
+                    هزینه قطعی را سامانه ثبت آنی محاسبه می‌کند. برای اعلام رقم دقیق و
+                    رایگان با ما تماس بگیرید.
                   </p>
                   <Link
                     to="/fees"
                     className="flex items-center justify-center w-full bg-slate-900 hover:bg-slate-800 text-white font-medium px-4 py-3 rounded-xl transition-colors"
                   >
-                    محاسبه هزینه
+                    استعلام هزینه
                     <ArrowLeftIcon className="w-4 h-4 ms-2" />
                   </Link>
                 </div>

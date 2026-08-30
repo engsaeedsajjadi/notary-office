@@ -1,42 +1,33 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
-import FeeCalculator from '../components/FeeCalculator';
-import { TARIFF_YEAR } from '../data/tariffs';
+import FeeInquiry from '../components/FeeInquiry';
 
 export default function FeesPage() {
   return (
     <>
       <Seo
-        title="محاسبه هزینه سند و تعرفه دفترخانه"
-        description={`محاسبه آنلاین و تخمینی هزینه تنظیم سند رسمی شامل حق‌التحریر، حق‌الثبت و مالیات بر اساس تعرفه مصوب سال ${TARIFF_YEAR} سازمان ثبت اسناد و املاک کشور.`}
+        title="استعلام هزینه سند و تعرفه دفترخانه"
+        description="استعلام رایگان هزینه تنظیم سند رسمی شامل حق‌التحریر، حق‌الثبت و مالیات. هزینه‌ها مطابق تعرفه مصوب سازمان ثبت اسناد و املاک کشور و در همه دفاتر یکسان است."
         path="/fees"
         keywords={[
-          'محاسبه هزینه سند',
+          'استعلام هزینه سند',
           'تعرفه دفتر اسناد رسمی',
           'حق التحریر',
           'هزینه وکالت نامه',
           'هزینه سند قطعی',
         ]}
-        schema={{
-          '@context': 'https://schema.org',
-          '@type': 'WebApplication',
-          name: 'ماشین‌حساب هزینه سند رسمی',
-          applicationCategory: 'FinanceApplication',
-          operatingSystem: 'Web',
-          offers: { '@type': 'Offer', price: '0', priceCurrency: 'IRR' },
-        }}
       />
 
       <section className="pt-28 pb-14 bg-slate-900">
         <div className="container mx-auto px-6">
-          <Breadcrumbs items={[{ label: 'محاسبه هزینه' }]} />
+          <Breadcrumbs items={[{ label: 'استعلام هزینه' }]} />
           <h1 className="text-3xl md:text-4xl font-bold text-white mt-6 mb-4">
-            محاسبه هزینه تنظیم سند
+            هزینه تنظیم سند
           </h1>
           <p className="text-slate-300 max-w-2xl leading-relaxed">
-            نوع سند و مبلغ آن را وارد کنید تا برآوردی از حق‌التحریر، حق‌الثبت، مالیات و
-            هزینه صدور الکترونیکی به شما نمایش داده شود.
+            هزینه هر سند را سامانه ثبت آنی بر اساس شرایط اختصاصی پرونده محاسبه می‌کند.
+            برای اعلام رقم دقیق و رایگان، نوع سند خود را مشخص کنید و با ما تماس بگیرید.
           </p>
         </div>
       </section>
@@ -45,7 +36,7 @@ export default function FeesPage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             <div className="lg:col-span-2">
-              <FeeCalculator />
+              <FeeInquiry />
             </div>
 
             <aside className="space-y-6">

@@ -13,40 +13,22 @@ import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { SnappIcon } from './icons/SnappIcon';
 import { RubikaIcon } from './icons/RubikaIcon';
 import { BaleIcon } from './icons/BaleIcon';
+import { BUSINESS, navigationLinks as navLinks } from '../src/data/business';
 
-// مختصات دقیق دفترخانه (ساختمان مرکز تجارت ایران - برج مشکی جردن)
-const LAT = 35.7796915;
-const LNG = 51.4224039;
-const PLACE_LABEL = 'دفتر اسناد رسمی ۱۷۶۲ تهران';
-const SNAPP_KEYWORD = 'دفتر اسناد رسمی ۱۷۶۲';
+// همه مقادیر از منبع واحد خوانده می‌شود تا لینک‌ها در دو جای سایت
+// از هم واگرا نشوند. مقدار را اینجا دستی ننویسید.
+const PLACE_LABEL = BUSINESS.name;
+const SNAPP_KEYWORD = BUSINESS.snappKeyword;
 
-const navigationLinks = [
-    {
-        name: 'گوگل مپ',
-        // لینک مبتنی بر مختصات - همیشه معتبر است و نیاز به لینک کوتاه ندارد
-        href: `https://www.google.com/maps/search/?api=1&query=${LAT}%2C${LNG}`,
-        icon: <GoogleMapsIcon className="w-6 h-6 me-2" />,
-    },
-    {
-        name: 'نشان',
-        href: `https://neshan.org/maps/@${LAT},${LNG},17z,0p`,
-        icon: <NeshanIcon className="w-6 h-6 me-2" />,
-    },
-    {
-        name: 'بلد',
-        href: `https://balad.ir/location?latitude=${LAT}&longitude=${LNG}&zoom=17`,
-        icon: <BaladIcon className="w-6 h-6 me-2" />,
-    },
-    {
-        name: 'ویز',
-        href: `https://www.waze.com/ul?ll=${LAT}%2C${LNG}&navigate=yes&zoom=17`,
-        icon: <WazeIcon className="w-6 h-6 me-2" />,
-    },
+const mapButtons = [
+    { name: 'گوگل مپ', href: navLinks.google, icon: <GoogleMapsIcon className="w-6 h-6 me-2" /> },
+    { name: 'نشان', href: navLinks.neshan, icon: <NeshanIcon className="w-6 h-6 me-2" /> },
+    { name: 'بلد', href: navLinks.balad, icon: <BaladIcon className="w-6 h-6 me-2" /> },
+    { name: 'ویز', href: navLinks.waze, icon: <WazeIcon className="w-6 h-6 me-2" /> },
 ];
 
 const Contact: React.FC = () => {
-  // نقشه تعبیه‌شده بر پایه مختصات (بدون نیاز به کلید API)
-  const mapUrl = `https://maps.google.com/maps?q=${LAT},${LNG}&z=17&hl=fa&output=embed`;
+  const mapUrl = navLinks.embed;
 
   const [copied, setCopied] = React.useState(false);
 
@@ -141,7 +123,7 @@ const Contact: React.FC = () => {
             <div className="mt-8 pt-8 border-t border-slate-200">
                 <h3 className="font-bold text-lg mb-4 text-center">مسیریابی</h3>
                  <div className="grid grid-cols-2 gap-4">
-                     {navigationLinks.map(link => (
+                     {mapButtons.map(link => (
                          <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center bg-slate-700 text-white px-4 py-3 rounded-md hover:bg-slate-900 transition-colors duration-300">
                              {link.icon}
                              <span>{link.name}</span>

@@ -6,7 +6,7 @@ import { PhoneIcon } from '../../components/icons/PhoneIcon';
 const NAV = [
   { to: '/', label: 'خانه', end: true },
   { to: '/services', label: 'خدمات' },
-  { to: '/fees', label: 'محاسبه هزینه' },
+  { to: '/fees', label: 'استعلام هزینه' },
   { to: '/checklist', label: 'مدارک لازم' },
   { to: '/articles', label: 'مقالات' },
   { to: '/appointment', label: 'درخواست نوبت' },

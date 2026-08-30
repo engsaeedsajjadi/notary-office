@@ -61,7 +61,7 @@ export default function SiteFooter() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/fees" className="text-slate-400 hover:text-amber-400 transition-colors">
-                  محاسبه هزینه سند
+                  استعلام هزینه سند
                 </Link>
               </li>
               <li>

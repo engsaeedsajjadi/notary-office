@@ -54,10 +54,29 @@ export const BUSINESS = {
 export const primaryPhone = BUSINESS.phones.find((p) => p.primary)!;
 
 /** لینک‌های مسیریابی، ساخته‌شده از مختصات مرکزی */
+/**
+ * لینک‌های مسیریابی.
+ *
+ * ⚠️ نکته مهم: برای گوگل مپ، نشان و بلد از **لینک مکان ثبت‌شده** استفاده
+ * می‌شود، نه از جستجوی مختصات. تفاوت زیاد است:
+ *
+ *   جستجوی مختصات  → کاربر روی یک نقطه خالی می‌افتد، بدون نام و اطلاعات دفتر.
+ *   لینک مکان ثبت‌شده → صفحه خود دفترخانه با نام، تلفن، ساعت کاری و امتیاز.
+ *
+ * پس این لینک‌ها را با مختصات جایگزین نکنید. اگر مکان در سرویس جدیدی ثبت
+ * شد، لینک اشتراک‌گذاری همان سرویس را اینجا اضافه کنید.
+ *
+ * ویز مکان ثبت‌شده ندارد، بنابراین همچنان بر پایه مختصات کار می‌کند.
+ */
 export const navigationLinks = {
-  google: `https://www.google.com/maps/search/?api=1&query=${BUSINESS.geo.lat}%2C${BUSINESS.geo.lng}`,
-  neshan: `https://neshan.org/maps/@${BUSINESS.geo.lat},${BUSINESS.geo.lng},17z,0p`,
-  balad: `https://balad.ir/location?latitude=${BUSINESS.geo.lat}&longitude=${BUSINESS.geo.lng}&zoom=17`,
+  google: 'https://maps.app.goo.gl/Xj2Cf8hQFPXwiarr7',
+  neshan: 'https://nshn.ir/80rbv7JSexi4Ht',
+  balad: 'https://balad.ir/p/1TjTcqhuAoBurF',
   waze: `https://www.waze.com/ul?ll=${BUSINESS.geo.lat}%2C${BUSINESS.geo.lng}&navigate=yes&zoom=17`,
-  embed: `https://maps.google.com/maps?q=${BUSINESS.geo.lat},${BUSINESS.geo.lng}&z=17&hl=fa&output=embed`,
+
+  // نقشه تعبیه‌شده: با جستجوی نام کسب‌وکار، پین همراه با نام دفتر نمایش
+  // داده می‌شود — برخلاف جستجوی مختصات که فقط یک نقطه بی‌نام است.
+  embed: `https://maps.google.com/maps?q=${encodeURIComponent(
+    'دفتر اسناد رسمی ۱۷۶۲ تهران',
+  )}&ll=${BUSINESS.geo.lat},${BUSINESS.geo.lng}&z=17&hl=fa&output=embed`,
 };

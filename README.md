@@ -1,20 +1,99 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# وب‌سایت دفتر اسناد رسمی شماره ۱۷۶۲ تهران
 
-# Run and deploy your AI Studio app
+وب‌سایت تک‌صفحه‌ای (Single Page) دفترخانه ۱۷۶۲ تهران، شامل معرفی خدمات، صلح عمری،
+سوالات متداول، اطلاعات تماس و مسیریابی.
 
-This contains everything you need to run your app locally.
+ساخته‌شده با **React 19 + TypeScript + Vite** و **Tailwind CSS**.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1VFe6ugQtpOEmfIxO1Tx9QCXV1jZtaFpj
+---
 
-## Run Locally
+## اجرای پروژه
 
-**Prerequisites:**  Node.js
+**پیش‌نیاز:** Node.js نسخه ۱۸ به بالا
 
+```bash
+# نصب وابستگی‌ها
+npm install
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+# اجرای سرور توسعه روی http://localhost:3000
+npm run dev
+
+# ساخت نسخه نهایی در پوشه dist/
+npm run build
+
+# پیش‌نمایش نسخه ساخته‌شده
+npm run preview
+```
+
+---
+
+## ساختار پروژه
+
+```
+├── index.html              صفحه اصلی، متاتگ‌های SEO و Schema.org
+├── index.tsx               نقطه ورود React
+├── App.tsx                 چیدمان بخش‌های صفحه
+├── components/             کامپوننت‌های صفحه
+│   ├── Header.tsx          هدر چسبان + منو
+│   ├── Hero.tsx            بخش معرفی بالای صفحه
+│   ├── Features.tsx        سه ویژگی کلیدی
+│   ├── Services.tsx        دسته‌بندی خدمات
+│   ├── ServicesDetail.tsx  فهرست کامل خدمات + مقاله صلح عمری
+│   ├── FAQ.tsx             سوالات متداول
+│   ├── Contact.tsx         تماس، نقشه، مسیریابی و اسنپ
+│   ├── Footer.tsx          فوتر
+│   └── icons/              آیکون‌های SVG
+├── public/                 فایل‌های استاتیک (مستقیماً در dist کپی می‌شوند)
+│   ├── favicon.ico         فاویکون چندلایه ۱۶+۳۲+۴۸
+│   ├── favicon.svg         نشان برداری
+│   ├── og-image.png        تصویر اشتراک‌گذاری شبکه‌های اجتماعی
+│   ├── site.webmanifest    مانیفست PWA
+│   ├── robots.txt
+│   └── sitemap.xml
+└── assets-src/             منابع طراحی نشان (در سایت منتشر نمی‌شوند)
+    ├── icon.svg            نشان کامل — برای ۱۹۲px به بالا
+    ├── icon-small.svg      نشان ساده‌شده — برای ۳۲ تا ۱۸۰px
+    ├── icon-16.svg         نشان حداقلی — برای ۱۶px
+    └── generate-icons.mjs  اسکریپت تولید آیکون‌ها
+```
+
+> ⚠️ هر فایلی که باید با آدرس مستقیم (مثل `/favicon.ico`) در دسترس باشد،
+> **باید** داخل پوشه `public/` قرار بگیرد. Vite فقط محتوای این پوشه را در خروجی کپی می‌کند.
+
+---
+
+## بازتولید آیکون‌ها
+
+نشان سایت در سه نسخه طراحی شده تا در هر اندازه‌ای خوانا بماند:
+نسخه کامل (سند + مهر + عدد ۱۷۶۲)، نسخه ساده‌شده (فقط عدد) و نسخه حداقلی (فقط تیک) برای ۱۶ پیکسل.
+
+برای بازتولید همه‌ی آیکون‌ها پس از ویرایش فایل‌های SVG:
+
+```bash
+npm install --no-save sharp
+npm run icons
+```
+
+خروجی در پوشه `public/` نوشته می‌شود.
+
+> برای درست ساخته‌شدن متن فارسی روی `og-image.png`، فونت **Vazirmatn** باید روی سیستم نصب باشد.
+> نسخه‌ای از فونت در `assets-src/fonts/` قرار دارد؛ کافی است در فونت‌های سیستم کپی شود.
+
+---
+
+## انتشار (Deploy)
+
+پروژه روی **Vercel** منتشر می‌شود. تنظیمات در `vercel.json` قرار دارد و
+پوشه خروجی `dist` است. با هر push روی برنچ اصلی، انتشار به‌صورت خودکار انجام می‌شود.
+
+---
+
+## نکات نگهداری
+
+- **مختصات جغرافیایی دفترخانه** در بالای فایل `components/Contact.tsx` به‌صورت ثابت
+  (`LAT` و `LNG`) تعریف شده است. با تغییر همین دو مقدار، نقشه و هر پنج لینک مسیریابی
+  (گوگل مپ، نشان، بلد، ویز و نقشه تعبیه‌شده) همزمان به‌روز می‌شوند.
+- **اطلاعات تماس و ساعات کاری** در دو جا تکرار شده‌اند: متن کامپوننت `Contact.tsx`
+  و Schema.org داخل `index.html`. هنگام تغییر، هر دو را به‌روز کنید.
+- **دامنه سایت** در `index.html` (canonical و Open Graph)، `public/robots.txt`
+  و `public/sitemap.xml` آمده است.

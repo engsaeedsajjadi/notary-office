@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="نشان ۱۷۶۲">
+  <defs>
+    <linearGradient id="shieldS" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="goldS" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fcd34d"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M256 16 L462 88 V266 C462 380 378 462 256 500 C134 462 50 380 50 266 V88 Z"
+        fill="url(#shieldS)"/>
+  <path d="M256 16 L462 88 V266 C462 380 378 462 256 500 C134 462 50 380 50 266 V88 Z"
+        fill="none" stroke="url(#goldS)" stroke-width="36" stroke-linejoin="round"/>
+
+  <text x="256" y="234" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-weight="bold"
+        font-size="132" letter-spacing="-4" fill="url(#goldS)">17</text>
+  <text x="256" y="366" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-weight="bold"
+        font-size="132" letter-spacing="-4" fill="url(#goldS)">62</text>
+</svg>

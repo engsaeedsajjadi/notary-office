@@ -61,7 +61,7 @@ const Gallery: React.FC = () => {
   const active = openIndex === null ? null : photos[openIndex];
 
   return (
-    <section id="gallery" className="py-20 bg-white">
+    <section id="gallery" className="py-16 bg-slate-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <span className="text-amber-600 font-bold text-sm mb-2 block">گالری</span>

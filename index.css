@@ -1,0 +1,43 @@
+/* ================= FONT (self-hosted) ================= */
+/*
+ * فونت وزیرمتن به‌صورت محلی سرو می‌شود تا سایت به CDN خارجی وابسته نباشد.
+ * از نسخه variable استفاده شده که همه وزن‌های ۱۰۰ تا ۹۰۰ را در یک فایل
+ * ۱۱۱ کیلوبایتی پوشش می‌دهد (کوچک‌تر از مجموع فایل‌های جداگانه).
+ */
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/fonts/Vazirmatn-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    font-family: 'Vazirmatn', system-ui, sans-serif;
+  }
+}
+
+/* احترام به تنظیم کاهش حرکت در سیستم‌عامل کاربر */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

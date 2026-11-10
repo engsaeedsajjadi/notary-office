@@ -1,6 +1,6 @@
 // Single source of truth for the office's public details.
 // The page components and the JSON-LD in index.html (built in vite.config.ts)
-// both read from here. Phone and hours for Google are set separately under
+// both read from here. The phone number for Google is set separately under
 // `google` below.
 
 export const site = {
@@ -31,13 +31,10 @@ export const site = {
   ],
   closedLabel: 'جمعه‌ها و تعطیلات رسمی: تعطیل',
 
-  // Values published to Google (schema.org JSON-LD). Kept as the owner set
-  // them; they intentionally differ from the phone/hours shown on the page.
+  // Phone number published to Google (schema.org JSON-LD). Kept as the
+  // owner set it; it differs from the landlines shown on the page.
   google: {
     telephone: '+989050890758',
-    hours: [
-      { days: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'], opens: '08:00', closes: '16:00' },
-    ],
   },
 
   messengers: {
@@ -104,7 +101,7 @@ export function structuredData(): object[] {
         longitude: site.address.longitude,
       },
       hasMap: site.maps.google,
-      openingHoursSpecification: site.google.hours.map((h) => ({
+      openingHoursSpecification: site.hours.map((h) => ({
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: h.days,
         opens: h.opens,

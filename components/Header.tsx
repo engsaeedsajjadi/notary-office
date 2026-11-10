@@ -61,6 +61,7 @@ const Header: React.FC = () => {
                 <a href="#home" onClick={(e) => handleNavClick(e, 'home')} className="hover:text-amber-400 transition-colors cursor-pointer">خانه</a>
                 <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-amber-400 transition-colors cursor-pointer">خدمات</a>
                 <a href="#features" onClick={(e) => handleNavClick(e, 'features')} className="hover:text-amber-400 transition-colors cursor-pointer">ویژگی‌ها</a>
+                <a href="#gallery" onClick={(e) => handleNavClick(e, 'gallery')} className="hover:text-amber-400 transition-colors cursor-pointer">گالری</a>
                 <a href="#faq" onClick={(e) => handleNavClick(e, 'faq')} className="hover:text-amber-400 transition-colors cursor-pointer">سوالات متداول</a>
                 <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-amber-400 transition-colors cursor-pointer">تماس و آدرس</a>
             </nav>

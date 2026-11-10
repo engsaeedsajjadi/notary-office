@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import Reviews from '../components/Reviews';
+import Gallery from '../components/Gallery';
 import Hero from '../../components/Hero';
 import Features from '../../components/Features';
 import FAQ, { faqs } from '../../components/FAQ';
@@ -234,6 +235,7 @@ export default function HomePage() {
       </section>
 
       <FAQ />
+      <Gallery />
       <Contact />
     </>
   );

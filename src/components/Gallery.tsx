@@ -4,45 +4,29 @@ interface Photo {
   src: string;
   alt: string;
   caption: string;
-  width: number;
-  height: number;
 }
 
+// All photos are 1280×576.
 const photos: Photo[] = [
   {
     src: '/gallery/building-entrance.jpg',
     alt: 'ورودی ساختمان مرکز تجارت ایران در خیابان جردن',
     caption: 'ورودی ساختمان مرکز تجارت ایران',
-    width: 1280,
-    height: 576,
-  },
-  {
-    src: '/gallery/office-sign.jpg',
-    alt: 'تابلوی دفتر اسناد رسمی شماره ۱۷۶۲',
-    caption: 'تابلوی دفترخانه',
-    width: 369,
-    height: 166,
   },
   {
     src: '/gallery/waiting-area.jpg',
     alt: 'فضای انتظار مراجعین در دفتر اسناد رسمی ۱۷۶۲',
     caption: 'فضای انتظار مراجعین',
-    width: 1280,
-    height: 576,
   },
   {
     src: '/gallery/office-desk.jpg',
     alt: 'میز کار و صندلی مراجعین در دفتر اسناد رسمی ۱۷۶۲',
     caption: 'میز پذیرش مراجعین',
-    width: 1280,
-    height: 576,
   },
   {
     src: '/gallery/office-window.jpg',
     alt: 'اتاق کار دفتر اسناد رسمی ۱۷۶۲',
     caption: 'اتاق کار',
-    width: 1280,
-    height: 576,
   },
 ];
 
@@ -74,79 +58,36 @@ const Gallery: React.FC = () => {
     };
   }, [openIndex, close, step]);
 
-  const [featured, ...rest] = photos;
   const active = openIndex === null ? null : photos[openIndex];
 
   return (
-    <section id="gallery" className="py-20 bg-slate-50">
+    <section id="gallery" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 max-w-2xl mx-auto">
-          <span className="text-amber-600 font-bold tracking-wider text-sm mb-2 block">گالری</span>
+          <span className="text-amber-600 font-bold text-sm mb-2 block">گالری</span>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">نگاهی به دفترخانه</h2>
           <p className="text-slate-500">پیش از مراجعه، ورودی ساختمان و فضای دفتر را ببینید</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <figure className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-            <video
-              className="w-full aspect-video bg-slate-900"
-              controls
-              playsInline
-              preload="none"
-              poster="/gallery/office-tour-poster.jpg"
-            >
-              <source src="/gallery/office-tour.mp4" type="video/mp4" />
-              مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-            </video>
-            <figcaption className="px-5 py-3 text-sm font-medium text-slate-700">
-              ویدیوی معرفی فضای دفترخانه
-            </figcaption>
-          </figure>
-
-          <figure className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
-            <button
-              type="button"
-              onClick={() => setOpenIndex(0)}
-              className="block w-full group focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-400"
-              aria-label={`نمایش بزرگ‌تر: ${featured.caption}`}
-            >
-              <img
-                src={featured.src}
-                alt={featured.alt}
-                width={featured.width}
-                height={featured.height}
-                loading="lazy"
-                className="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </button>
-            <figcaption className="px-5 py-3 text-sm font-medium text-slate-700">
-              {featured.caption}
-            </figcaption>
-          </figure>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-          {rest.map((photo, i) => (
-            <figure
-              key={photo.src}
-              className="bg-white rounded-xl shadow border border-slate-200 overflow-hidden"
-            >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {photos.map((photo, i) => (
+            <figure key={photo.src} className="relative rounded-2xl overflow-hidden shadow-lg bg-slate-200">
               <button
                 type="button"
-                onClick={() => setOpenIndex(i + 1)}
-                className="block w-full group focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-400"
+                onClick={() => setOpenIndex(i)}
+                className="block w-full group focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-amber-400"
                 aria-label={`نمایش بزرگ‌تر: ${photo.caption}`}
               >
                 <img
                   src={photo.src}
                   alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
+                  width={1280}
+                  height={576}
                   loading="lazy"
                   className="w-full aspect-[20/9] object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </button>
-              <figcaption className="px-3 py-2 text-xs sm:text-sm text-slate-600 text-center">
+              <figcaption className="pointer-events-none absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/85 to-transparent px-4 pt-10 pb-3 text-sm font-medium text-white">
                 {photo.caption}
               </figcaption>
             </figure>
@@ -165,10 +106,11 @@ const Gallery: React.FC = () => {
           <button
             type="button"
             onClick={close}
+            autoFocus
             className="absolute top-4 left-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center"
             aria-label="بستن"
           >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
           </button>
@@ -176,10 +118,10 @@ const Gallery: React.FC = () => {
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); step(-1); }}
-            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center"
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center"
             aria-label="تصویر قبلی"
           >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="m9 5 7 7-7 7" />
             </svg>
           </button>
@@ -188,8 +130,8 @@ const Gallery: React.FC = () => {
             <img
               src={active.src}
               alt={active.alt}
-              width={active.width}
-              height={active.height}
+              width={1280}
+              height={576}
               className="max-w-full max-h-[80vh] w-auto h-auto mx-auto rounded-lg shadow-2xl"
             />
             <figcaption className="text-center text-slate-200 text-sm mt-4">
@@ -200,10 +142,10 @@ const Gallery: React.FC = () => {
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); step(1); }}
-            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center"
+            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center"
             aria-label="تصویر بعدی"
           >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="m15 5-7 7 7 7" />
             </svg>
           </button>

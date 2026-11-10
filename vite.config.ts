@@ -1,23 +1,27 @@
-import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { structuredData } from './data/site';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
-    return {
-      server: {
-        port: 3000,
-        host: '0.0.0.0',
-      },
-      plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, '.'),
-        }
-      }
-    };
+/** Writes the schema.org JSON-LD into <head> from data/site.ts. */
+function jsonLd(): Plugin {
+  return {
+    name: 'inject-json-ld',
+    transformIndexHtml() {
+      return structuredData().map((block) => ({
+        tag: 'script',
+        attrs: { type: 'application/ld+json' },
+        // Escape "<" so the JSON can never close the script tag early.
+        children: JSON.stringify(block).replace(/</g, '\\u003c'),
+        injectTo: 'head' as const,
+      }));
+    },
+  };
+}
+
+export default defineConfig({
+  server: {
+    port: 3000,
+    host: '0.0.0.0',
+  },
+  plugins: [react(), jsonLd()],
 });

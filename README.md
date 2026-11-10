@@ -1,20 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# دفتر اسناد رسمی شماره ۱۷۶۲ تهران
 
-# Run and deploy your AI Studio app
+وب‌سایت تک‌صفحه‌ای دفترخانه ۱۷۶۲ (جردن، تهران): خدمات، گالری، سوالات متداول، اطلاعات تماس و مسیریابی.
 
-This contains everything you need to run your app locally.
+نشانی سایت: <https://www.1762daftarasnad.ir>
 
-View your app in AI Studio: https://ai.studio/apps/drive/1VFe6ugQtpOEmfIxO1Tx9QCXV1jZtaFpj
+## فناوری‌ها
 
-## Run Locally
+React 19، TypeScript، Vite و Tailwind CSS. فونت وزیرمتن همراه خود سایت بارگذاری می‌شود و سایت به هیچ CDN بیرونی وابسته نیست (به‌جز نقشهٔ گوگل در بخش تماس).
 
-**Prerequisites:**  Node.js
+## اجرا
 
+نیازمند Node.js نسخهٔ ۲۰ یا بالاتر.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+npm run dev        # اجرای محلی روی http://localhost:3000
+npm run build      # ساخت نسخهٔ نهایی در پوشهٔ dist
+npm run typecheck  # بررسی تایپ‌ها
+```
+
+## ساختار
+
+| مسیر | محتوا |
+|---|---|
+| `data/site.ts` | همهٔ اطلاعات دفترخانه (تلفن، آدرس، ساعات کاری، لینک‌ها، سوالات متداول) |
+| `src/components/` | بخش‌های صفحه |
+| `public/` | آیکون‌ها، عکس‌های گالری، `robots.txt` و `sitemap.xml` |
+| `index.html` | تگ‌های سئو |
+
+## تغییر اطلاعات دفترخانه
+
+شماره تلفن، آدرس، ساعات کاری و سوالات متداول را فقط در `data/site.ts` عوض کنید. هم متن صفحه و هم دادهٔ ساختاریافتهٔ گوگل (JSON-LD) از همین فایل ساخته می‌شوند. خلاصهٔ تماس داخل تگ `noscript` در `index.html` جداست و باید دستی به‌روز شود.
+
+## انتشار
+
+هر پوش روی شاخهٔ `main` به‌صورت خودکار روی Vercel منتشر می‌شود.

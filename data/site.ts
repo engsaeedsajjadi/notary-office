@@ -1,6 +1,7 @@
 // Single source of truth for the office's public details.
 // The page components and the JSON-LD in index.html (built in vite.config.ts)
-// both read from here, so the two can't drift apart.
+// both read from here. Phone and hours for Google are set separately under
+// `google` below.
 
 export const site = {
   name: 'دفتر اسناد رسمی شماره ۱۷۶۲ تهران',
@@ -29,6 +30,15 @@ export const site = {
     { label: 'پنج‌شنبه‌ها', display: '۷:۳۰ الی ۱۲:۰۰', days: ['Thursday'], opens: '07:30', closes: '12:00' },
   ],
   closedLabel: 'جمعه‌ها و تعطیلات رسمی: تعطیل',
+
+  // Values published to Google (schema.org JSON-LD). Kept as the owner set
+  // them; they intentionally differ from the phone/hours shown on the page.
+  google: {
+    telephone: '+989050890758',
+    hours: [
+      { days: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'], opens: '08:00', closes: '16:00' },
+    ],
+  },
 
   messengers: {
     eitaa: { handle: '@No1762notarypublic', href: 'https://eitaa.com/No1762notarypublic' },
@@ -79,7 +89,7 @@ export function structuredData(): object[] {
       logo: `${site.url}/android-chrome-512x512.png`,
       image: `${site.url}/og-image.jpg`,
       description: site.description,
-      telephone: site.phones.map((p) => p.tel),
+      telephone: site.google.telephone,
       email: site.email,
       address: {
         '@type': 'PostalAddress',
@@ -94,7 +104,7 @@ export function structuredData(): object[] {
         longitude: site.address.longitude,
       },
       hasMap: site.maps.google,
-      openingHoursSpecification: site.hours.map((h) => ({
+      openingHoursSpecification: site.google.hours.map((h) => ({
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: h.days,
         opens: h.opens,
